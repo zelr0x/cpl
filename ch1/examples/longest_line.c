@@ -18,12 +18,12 @@ int get_line(char s[], int count) {
 void copy(char src[], char dst[], int count) {
 	if (count < 1) return;
 	int i = 0;
-	while (i < count-1 && i < MAX_SIZE) {
+	for (; i < count-1 && src[i] != '\0'; i++) {
 		dst[i] = src[i];
-		if (src[i] == '\0') return;
-		++i;
 	}
-	src[i] = '\0';
+	for (; i < count; i++) {
+		dst[i] = '\0';
+	}
 }
 
 int main(void) {
