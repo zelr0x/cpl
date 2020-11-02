@@ -15,15 +15,10 @@ int get_line(char s[], int count) {
 	return i;
 }
 
-void copy(char src[], char dst[], int count) {
-	if (count < 1) return;
-	int i = 0;
-	for (; i < count-1 && src[i] != '\0'; i++) {
-		dst[i] = src[i];
-	}
-	for (; i < count; i++) {
-		dst[i] = '\0';
-	}
+void copy(char to[], char from[]) {
+    int i = 0;
+	while ((to[i] = from[i]) != '\0')
+		++i;
 }
 
 int main(void) {
@@ -34,7 +29,7 @@ int main(void) {
 	while ((len = get_line(line, MAX_SIZE)) > 0) {
 		if (len > max_len) {
 			max_len = len;
-			copy(line, longest, len);
+			copy(longest, line);
 		}
 	}
 	if (max_len > 0) {
