@@ -1,10 +1,11 @@
 #include <stdio.h>
 
-#define MAX_SIZE 1024
+#define MAX_SIZE 3
 
 int get_line(char s[]) {
 	int c, i;
-	for (i = 0; i < MAX_SIZE-1 && (c = getchar()) != EOF && c != '\n'; ++i) {
+	int limit = MAX_SIZE - 1;
+	for (i = 0; i < limit && (c = getchar()) != EOF && c != '\n'; ++i) {
 		s[i] = c;
 	}
 	if (c == '\n') {
@@ -12,7 +13,7 @@ int get_line(char s[]) {
 		++i;
 	}
 	s[i] = '\0';
-	while ((c = getchar()) != EOF && c != '\0' && c != '\n') i++;
+	while (i >= limit && (c = getchar()) != EOF && c != '\0' && c != '\n') i++;
 	return i;
 }
 
