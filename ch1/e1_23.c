@@ -12,6 +12,8 @@ cc e1_23.c -Wall && ./a.out < e1_23.c > test.c \
 
 int prev = -1;
 int cur = -1;
+char __ignored_for_test[] = "123 // 123";
+char __ignored_for_test2[]= "123 /* 123 */ 123";
 
 // Reads line till MAXLINE or the end of multiline comment (EOC), i.e.
 // `*/` sequence or `\n` or EOF (since reads only one line).
@@ -44,7 +46,8 @@ test
 * kek
 */
 int main(void) {
-	//char devnull[MAXLINE];
+    // looks like the absence of a check that the line before comment is empty
+    // causes the whitespace before the comment to be added to the next line.
 	extern int cur;
 	extern int prev;
 	bool in_str = false;
