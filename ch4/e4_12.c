@@ -1,5 +1,4 @@
 #include <stdio.h>
-#include <string.h>
 
 static size_t _itoa(int n, char s[], size_t i) {
     int div = n / 10;
