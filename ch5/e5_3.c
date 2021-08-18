@@ -7,10 +7,11 @@ void strcat(char *s, const char *t) {
         ;
     while (*s++ = *t++) /* copy t */
         ;
+    *s = '\0';
 }
 
 int main(void) {
-    char a[10] = {'a', 'a', 'a', 'a', '\0', '\0', '\0', '\0', 'g', '\0'};
+    char a[] = {'a', 'a', 'a', 'a', '\0', '\0', '\0', '\0', 'x'};
     char b[] = "bbbb";
     strcat(a, b);
     printf("%s\n", a);
